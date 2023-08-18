@@ -2,7 +2,7 @@ use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
 
-use crate::pages::{HomePage, NotFound};
+use crate::pages::{HomePage, Layout, NotFound};
 
 #[component]
 pub fn App(cx: Scope) -> impl IntoView {
@@ -21,7 +21,9 @@ pub fn App(cx: Scope) -> impl IntoView {
         <Router>
             <main>
                 <Routes>
-                    <Route path="" view=HomePage/>
+                    <Route path="" view=Layout>
+                        <Route path="" view=HomePage/>
+                    </Route>
                     <Route path="/*any" view=NotFound/>
                 </Routes>
             </main>
