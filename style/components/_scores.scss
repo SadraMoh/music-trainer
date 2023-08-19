@@ -1,0 +1,13 @@
+@import "../utility";
+@import "../vars";
+
+.scores {
+  color: $text;
+  font-size: 2rem;
+  font-weight: 400;
+
+  padding: $p-lg;
+  gap: 32px;
+
+  @include flex;
+}

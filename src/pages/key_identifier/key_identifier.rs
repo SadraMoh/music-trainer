@@ -2,7 +2,6 @@ use super::scores::Scores;
 use crate::components::{NoteBoard, Scene};
 use leptos::*;
 
-/// Renders the home page of your application.
 #[component]
 pub fn KeyIdentifier(cx: Scope) -> impl IntoView {
     view! {

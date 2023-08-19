@@ -1,0 +1,19 @@
+@import '../utility';
+@import '../vars';
+
+$scene-bg: #FAECD3;
+$scene-border: #D2C4AA;
+
+.scene {
+  background-color: $scene-bg;
+  box-shadow: 0px 6px 0px 0px $scene-border;
+  border-radius: 6px;
+  border: 2px solid $scene-border;
+  padding: $p-md;
+  color: $note-color;
+  //
+  width: 10rem;
+  height: 10rem;
+
+  @include flex;
+}
