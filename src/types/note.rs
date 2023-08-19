@@ -1,5 +1,7 @@
 use std::fmt::Display;
 
+use leptos::IntoView;
+
 #[derive(Clone, Copy, PartialEq)]
 pub enum Note {
     C,
@@ -22,58 +24,62 @@ pub enum Note {
 }
 
 impl Note {
-    pub fn all() -> [Note; 17] {
-        [
-            Note::C,
-            Note::CSharp,
-            Note::D,
-            Note::DSharp,
-            Note::DFlat,
-            Note::E,
-            Note::EFlat,
-            Note::F,
-            Note::FSharp,
-            Note::G,
-            Note::GSharp,
-            Note::GFlat,
-            Note::A,
-            Note::ASharp,
-            Note::AFlat,
-            Note::B,
-            Note::BFlat,
-        ]
+    pub const ALL: [Note; 17] = [
+        Note::C,
+        Note::CSharp,
+        Note::D,
+        Note::DSharp,
+        Note::DFlat,
+        Note::E,
+        Note::EFlat,
+        Note::F,
+        Note::FSharp,
+        Note::G,
+        Note::GSharp,
+        Note::GFlat,
+        Note::A,
+        Note::ASharp,
+        Note::AFlat,
+        Note::B,
+        Note::BFlat,
+    ];
+
+    pub const NATURALS: [Note; 7] = [
+        Note::C,
+        Note::D,
+        Note::E,
+        Note::F,
+        Note::G,
+        Note::A,
+        Note::B,
+    ];
+
+    pub fn is_natural(&self) -> bool {
+        Self::NATURALS.contains(self)
     }
 
-    pub fn naturals() -> [Note; 7] {
-        [
-            Note::C,
-            Note::D,
-            Note::E,
-            Note::F,
-            Note::G,
-            Note::A,
-            Note::B,
-        ]
+    pub const SHARPS: [Note; 5] = [
+        Note::CSharp,
+        Note::DSharp,
+        Note::FSharp,
+        Note::GSharp,
+        Note::ASharp,
+    ];
+
+    pub fn is_sharp(&self) -> bool {
+        Self::SHARPS.contains(self)
     }
 
-    pub fn sharps() -> [Note; 5] {
-        [
-            Note::CSharp,
-            Note::DSharp,
-            Note::FSharp,
-            Note::GSharp,
-            Note::ASharp,
-        ]
-    }
+    pub const FLATS: [Note; 5] = [
+        Note::DFlat,
+        Note::EFlat,
+        Note::GFlat,
+        Note::AFlat,
+        Note::BFlat,
+    ];
 
-    pub fn flats() -> [Note; 5] {
-        [
-            Note::DFlat,
-            Note::EFlat,
-            Note::GFlat,
-            Note::AFlat,
-            Note::BFlat,
-        ]
+    pub fn is_flat(&self) -> bool {
+        Self::FLATS.contains(self)
     }
 }
 
@@ -102,5 +108,11 @@ impl Display for Note {
                 Note::BFlat => "Bb",
             }
         )
+    }
+}
+
+impl IntoView for Note {
+    fn into_view(self, cx: leptos::Scope) -> leptos::View {
+        self.to_string().into_view(cx)
     }
 }

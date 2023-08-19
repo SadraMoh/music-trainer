@@ -48,6 +48,16 @@ $note-board-padding: $p-lg;
       background: lighten($note-bg, 8%);
     }
 
+    button.correct:active {
+      border-color: #152512;
+      background: #283a27;
+    }
+
+    button.wrong:active {
+      border-color: #251212;
+      background: #372222;
+    }
+
     button.focus {
       border-color: #2acac0;
     }
