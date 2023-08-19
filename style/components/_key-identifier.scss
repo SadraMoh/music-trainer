@@ -5,4 +5,15 @@
   @include col;
   align-items: center;
   gap: 6rem;
+  padding: $p-lg;
+
+  .scene {
+    min-width: 12rem;
+    height: 12rem;
+    img {
+      margin: auto;
+      object-fit: contain;
+      height: 72%;
+    }
+  }
 }

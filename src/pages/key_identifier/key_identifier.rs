@@ -12,7 +12,7 @@ pub fn KeyIdentifier(cx: Scope) -> impl IntoView {
         <div class="key-identifier">
             <Scores />
             <Scene>
-                "This is a scene"
+                <img src="assets/icons/keys/C.svg" />
             </Scene>
             <NoteBoard answer=Note::B />
         </div>
