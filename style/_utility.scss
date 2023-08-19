@@ -7,7 +7,7 @@
   $alignContent: normal,
   $justifyContent: normal,
   $alignItems: normal,
-  $wrap: nowrap
+  $wrap: wrap
 ) {
   display: flex;
 
@@ -62,7 +62,6 @@
   @include colr;
 }
 
-
 // ------ { Responsive } ------
 
 @mixin screen-min($min) {
@@ -75,7 +74,6 @@
     @content;
   }
 }
-
 
 @mixin screen-xs-min {
   @media (min-width: ($xs + 1px)) {
@@ -142,7 +140,6 @@
     @content;
   }
 }
-
 
 // ------ { Misc } ------
 

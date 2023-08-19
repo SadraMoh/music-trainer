@@ -1,0 +1,55 @@
+@import "../utility";
+@import "../vars";
+
+$note-size: 64px;
+$grid-gap: 8px;
+$note-board-padding: $p-lg;
+
+.note-board {
+  padding: $note-board-padding;
+  @include flex;
+  width: ($note-size * 7) + ($grid-gap * 6);
+
+  border-radius: 8px;
+  border: 1px solid #3f3a3a;
+  background: #353232;
+
+  &-grid {
+    display: grid;
+    grid-template-areas:
+      "Cs Ds x Fs Gs As y"
+      "C D E F G A B"
+      "z Db Eb w Gb Ab Bb";
+    gap: $grid-gap;
+
+    $note-bg: #1c1d20;
+
+    button {
+      @include flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: $note-size;
+      height: $note-size;
+      padding: $p-lg;
+
+      border-radius: 6px;
+      border: 2px solid #0f0f11;
+      background: $note-bg;
+      cursor: pointer;
+      font-size: large;
+    }
+
+    button:hover {
+      background: lighten($note-bg, 4%);
+    }
+
+    button:active {
+      background: lighten($note-bg, 8%);
+    }
+
+    button.focus {
+      border-color: #2acac0;
+    }
+  }
+}
