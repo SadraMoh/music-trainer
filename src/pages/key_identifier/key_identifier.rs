@@ -9,7 +9,7 @@ use leptos::*;
 pub fn KeyIdentifier(cx: Scope) -> impl IntoView {
     view! {
         cx,
-        <div class="flex flex-col align-center">
+        <div class="key-identifier">
             <Scores />
             <Scene>
                 "This is a scene"

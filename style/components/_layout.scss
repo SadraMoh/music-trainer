@@ -1,0 +1,11 @@
+@import "../utility";
+@import "../vars";
+
+.layout {
+  @include col;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+}

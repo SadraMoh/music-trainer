@@ -1,0 +1,8 @@
+@import "../utility";
+@import "../vars";
+
+.key-identifier {
+  @include col;
+  align-items: center;
+  gap: 6rem;
+}

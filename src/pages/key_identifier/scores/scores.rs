@@ -4,7 +4,7 @@ use leptos::*;
 pub fn Scores(cx: Scope) -> impl IntoView {
     view! {
         cx,
-        <div>
+        <div class="scores">
           <span>
             <span>"12"</span>
             "/"

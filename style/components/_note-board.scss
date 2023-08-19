@@ -33,11 +33,12 @@ $note-board-padding: $p-lg;
       height: $note-size;
       padding: $p-lg;
 
+      font-size: large;
       border-radius: 6px;
       border: 2px solid #0f0f11;
       background: $note-bg;
       cursor: pointer;
-      font-size: large;
+      user-select: none;
     }
 
     button:hover {

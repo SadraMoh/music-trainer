@@ -3,11 +3,14 @@
 
 .scores {
   color: $text;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 400;
+  border-radius: 8px;
+  border: 1px solid #3f3a3a;
+  background: #353232;
 
   padding: $p-lg;
   gap: 32px;
 
-  @include flex;
+  @include row;
 }
