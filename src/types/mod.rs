@@ -1,3 +1,9 @@
+mod constants;
+mod key;
 mod note;
 
-pub use note::Note;
+pub use {
+    constants::PATH_ICONS,
+    key::{Key, KeyIcons},
+    note::Note,
+};

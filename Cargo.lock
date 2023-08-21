@@ -1403,11 +1403,14 @@ dependencies = [
  "actix-web",
  "cfg-if",
  "console_error_panic_hook",
+ "const_format",
  "http",
  "leptos",
  "leptos_actix",
  "leptos_meta",
  "leptos_router",
+ "many-to-many",
+ "once_cell",
  "wasm-bindgen",
 ]
 
@@ -1475,6 +1478,12 @@ checksum = "718e8fae447df0c7e1ba7f5189829e63fd536945c8988d61444c19039f16b670"
 dependencies = [
  "hashbrown 0.13.2",
 ]
+
+[[package]]
+name = "many-to-many"
+version = "0.1.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ff2806c88ab7215e5077fbaaf21a9baaab9caa2abd7adf6c0f63b535ad747547"
 
 [[package]]
 name = "memchr"
