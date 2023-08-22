@@ -20,6 +20,7 @@ $note-board-padding: $p-lg;
       "Cs Ds x Fs Gs As y"
       "C D E F G A B"
       "z Db Eb w Gb Ab Bb";
+
     gap: $grid-gap;
 
     $note-bg: #1c1d20;
@@ -62,5 +63,19 @@ $note-board-padding: $p-lg;
     button.focus {
       border-color: #2acac0;
     }
+  }
+
+  .layout-major-keys {
+    grid-template-areas:
+      "Cs x x Fs y y y"
+      "C D E F G A B"
+      "Cb Db Eb z Gb Ab Bb";
+  }
+
+  .layout-minor-keys {
+    grid-template-areas:
+      "Cs Ds x Fs Gs As y"
+      "C D E F G A B"
+      "z z Eb w w Ab Bb";
   }
 }

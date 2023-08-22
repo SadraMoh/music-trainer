@@ -23,8 +23,9 @@ wasm-bindgen = "=0.2.87"
 # TODO
 # stylers = { git = "https://github.com/abishekatp/stylers.git", rev = "efea057" }
 const_format = "0.2.31"
-many-to-many = "0.1.7"
+bimap = "0.6.3"
 once_cell = "1.18.0"
+rand = "0.8.5"
 
 [features]
 csr = ["leptos/csr", "leptos_meta/csr", "leptos_router/csr"]

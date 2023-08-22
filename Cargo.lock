@@ -364,6 +364,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "604178f6c5c21f02dc555784810edfb88d34ac2c73b2eae109655649ee73ce3d"
 
 [[package]]
+name = "bimap"
+version = "0.6.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "230c5f1ca6a325a32553f8640d31ac9b49f2411e901e427570154868b46da4f7"
+
+[[package]]
 name = "bitflags"
 version = "1.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1401,6 +1407,7 @@ version = "0.1.0"
 dependencies = [
  "actix-files",
  "actix-web",
+ "bimap",
  "cfg-if",
  "console_error_panic_hook",
  "const_format",
@@ -1409,8 +1416,8 @@ dependencies = [
  "leptos_actix",
  "leptos_meta",
  "leptos_router",
- "many-to-many",
  "once_cell",
+ "rand",
  "wasm-bindgen",
 ]
 
@@ -1478,12 +1485,6 @@ checksum = "718e8fae447df0c7e1ba7f5189829e63fd536945c8988d61444c19039f16b670"
 dependencies = [
  "hashbrown 0.13.2",
 ]
-
-[[package]]
-name = "many-to-many"
-version = "0.1.7"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ff2806c88ab7215e5077fbaaf21a9baaab9caa2abd7adf6c0f63b535ad747547"
 
 [[package]]
 name = "memchr"

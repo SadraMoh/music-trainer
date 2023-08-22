@@ -4,6 +4,6 @@ mod note;
 
 pub use {
     constants::PATH_ICONS,
-    key::{Key, KeyIcons},
+    key::{Key, KeyIcons, MajorKey, MinorKey},
     note::Note,
 };
