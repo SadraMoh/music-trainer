@@ -24,42 +24,52 @@ static ICON_GFLAT: &'static str = concatcp!(PATH_ICONS, "/keys/Gb.svg");
 
 static MAJOR_KEY_ICON_MAP: Lazy<Mutex<BiMap<MajorKey, &'static str>>> = Lazy::new(|| {
     let mut map = BiMap::<MajorKey, &'static str>::with_capacity(15);
-    map.insert(MajorKey::C, ICON_C);
-    map.insert(MajorKey::F, ICON_F);
-    map.insert(MajorKey::G, ICON_G);
-    map.insert(MajorKey::D, ICON_D);
-    map.insert(MajorKey::A, ICON_A);
-    map.insert(MajorKey::E, ICON_E);
-    map.insert(MajorKey::B, ICON_B);
-    map.insert(MajorKey::CFlat, ICON_CFLAT);
-    map.insert(MajorKey::FSharp, ICON_FSHARP);
-    map.insert(MajorKey::GFlat, ICON_GFLAT);
-    map.insert(MajorKey::DFlat, ICON_DFLAT);
-    map.insert(MajorKey::CSharp, ICON_CSHARP);
-    map.insert(MajorKey::AFlat, ICON_AFLAT);
-    map.insert(MajorKey::EFlat, ICON_EFLAT);
-    map.insert(MajorKey::BFlat, ICON_BFLAT);
+    MajorKey::ALL.iter().into_iter().for_each(|key| {
+        let key = *key;
+        match key {
+            MajorKey::C => map.insert(key, ICON_C),
+            MajorKey::F => map.insert(key, ICON_F),
+            MajorKey::G => map.insert(key, ICON_G),
+            MajorKey::D => map.insert(key, ICON_D),
+            MajorKey::A => map.insert(key, ICON_A),
+            MajorKey::E => map.insert(key, ICON_E),
+            MajorKey::B => map.insert(key, ICON_B),
+            MajorKey::CFlat => map.insert(key, ICON_CFLAT),
+            MajorKey::FSharp => map.insert(key, ICON_FSHARP),
+            MajorKey::GFlat => map.insert(key, ICON_GFLAT),
+            MajorKey::DFlat => map.insert(key, ICON_DFLAT),
+            MajorKey::CSharp => map.insert(key, ICON_CSHARP),
+            MajorKey::AFlat => map.insert(key, ICON_AFLAT),
+            MajorKey::EFlat => map.insert(key, ICON_EFLAT),
+            MajorKey::BFlat => map.insert(key, ICON_BFLAT),
+        };
+    });
 
     Mutex::new(map)
 });
 
 static MINOR_KEY_ICON_MAP: Lazy<Mutex<BiMap<MinorKey, &'static str>>> = Lazy::new(|| {
     let mut map = BiMap::<MinorKey, &'static str>::with_capacity(15);
-    map.insert(MinorKey::A, ICON_C);
-    map.insert(MinorKey::E, ICON_G);
-    map.insert(MinorKey::B, ICON_B);
-    map.insert(MinorKey::FSharp, ICON_FSHARP);
-    map.insert(MinorKey::CSharp, ICON_E);
-    map.insert(MinorKey::GSharp, ICON_B);
-    map.insert(MinorKey::AFlat, ICON_CFLAT);
-    map.insert(MinorKey::DSharp, ICON_FSHARP);
-    map.insert(MinorKey::EFlat, ICON_GFLAT);
-    map.insert(MinorKey::BFlat, ICON_DFLAT);
-    map.insert(MinorKey::ASharp, ICON_CSHARP);
-    map.insert(MinorKey::F, ICON_AFLAT);
-    map.insert(MinorKey::C, ICON_EFLAT);
-    map.insert(MinorKey::G, ICON_BFLAT);
-    map.insert(MinorKey::D, ICON_F);
+    MinorKey::ALL.iter().into_iter().for_each(|key| {
+        let key = *key;
+        match key {
+            MinorKey::A => map.insert(key, ICON_C),
+            MinorKey::E => map.insert(key, ICON_G),
+            MinorKey::B => map.insert(key, ICON_D),
+            MinorKey::FSharp => map.insert(key, ICON_A),
+            MinorKey::CSharp => map.insert(key, ICON_E),
+            MinorKey::GSharp => map.insert(key, ICON_B),
+            MinorKey::AFlat => map.insert(key, ICON_CFLAT),
+            MinorKey::DSharp => map.insert(key, ICON_FSHARP),
+            MinorKey::EFlat => map.insert(key, ICON_GFLAT),
+            MinorKey::BFlat => map.insert(key, ICON_DFLAT),
+            MinorKey::ASharp => map.insert(key, ICON_CSHARP),
+            MinorKey::F => map.insert(key, ICON_AFLAT),
+            MinorKey::C => map.insert(key, ICON_EFLAT),
+            MinorKey::G => map.insert(key, ICON_BFLAT),
+            MinorKey::D => map.insert(key, ICON_F),
+        };
+    });
 
     Mutex::new(map)
 });

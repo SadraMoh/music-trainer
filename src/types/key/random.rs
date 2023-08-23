@@ -26,8 +26,8 @@ impl Distribution<Key> for Standard {
     fn sample<R: Rng + ?Sized>(&self, rng: &mut R) -> Key {
         let index = rng.gen_range(0..2);
         match index {
-            0 => Key::Major(MajorKey::C),
-            1 => Key::Minor(MinorKey::A),
+            0 => rng.gen::<MajorKey>().into(),
+            1 => rng.gen::<MinorKey>().into(),
             _ => unreachable!(),
         }
     }

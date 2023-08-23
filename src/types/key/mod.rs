@@ -2,7 +2,7 @@ pub mod icons;
 mod key;
 mod random;
 
-pub use {
-    icons as KeyIcons,
-    key::{Key, MajorKey, MinorKey},
-};
+mod major_key;
+mod minor_key;
+
+pub use {icons as KeyIcons, key::Key, major_key::MajorKey, minor_key::MinorKey};
