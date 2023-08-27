@@ -30,6 +30,10 @@ pub fn KeyIdentifier(cx: Scope) -> impl IntoView {
 
     let key_note = move || question().into_note();
 
+    let on_note = |_| {
+        log!("hello from identifier");
+    };
+
     view! {
         cx,
         <div class="key-identifier">
@@ -38,7 +42,7 @@ pub fn KeyIdentifier(cx: Scope) -> impl IntoView {
             <Scene>
                 <img src=question_icon />
             </Scene>
-            <NoteBoard answer=Dynamic(key_note.derive_signal(cx)) layout=Dynamic(layout.derive_signal(cx)) />
+            <NoteBoard on_note=on_note answer=Dynamic(key_note.derive_signal(cx)) layout=Dynamic(layout.derive_signal(cx)) />
         </div>
     }
 }
