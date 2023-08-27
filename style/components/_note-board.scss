@@ -6,76 +6,128 @@ $grid-gap: 8px;
 $note-board-padding: $p-lg;
 
 .note-board {
-  padding: $note-board-padding;
-  @include flex;
-  width: ($note-size * 7) + ($grid-gap * 6);
+  @include col;
+  gap: $m-md;
+  align-items: center;
 
-  border-radius: 8px;
-  border: 1px solid #3f3a3a;
-  background: #353232;
+  .layout-indicator {
+    @include row;
+    border-radius: 8px;
+    border: 1px solid #3f3a3a;
+    background: #353232;
+    padding: $p-sm;
+    gap: $m-md;
 
-  &-grid {
-    display: grid;
-    grid-template-areas:
-      "Cs Ds x Fs Gs As y"
-      "C D E F G A B"
-      "z Db Eb w Gb Ab Bb";
-
-    gap: $grid-gap;
-
-    $note-bg: #1c1d20;
-
-    button {
-      @include flex;
+    span {
+      @include row;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
-      width: $note-size;
-      height: $note-size;
-      padding: $p-lg;
-
-      font-size: large;
-      border-radius: 6px;
-      border: 2px solid #0f0f11;
-      background: $note-bg;
-      cursor: pointer;
+      height: 24px;
+      width: 24px;
+      text-align: center;
+      text-transform: lowercase;
+      @include circle;
+      overflow: hidden;
+      transition: ease 0.2s;
+      transition-property: color width;
       user-select: none;
-    }
 
-    button:hover {
-      background: lighten($note-bg, 4%);
-    }
+      &.open {
+        width: 64px;
+      }
 
-    button:active {
-      background: lighten($note-bg, 8%);
-    }
+      &.major {
+        background-color: #d8bf3a;
+        color: #d8bf3a;
+      }
 
-    button.correct:active {
-      border-color: #152512;
-      background: #283a27;
-    }
+      &.major.open {
+        color: #766611;
+      }
 
-    button.wrong:active {
-      border-color: #251212;
-      background: #372222;
-    }
+      &.minor {
+        background-color: #2164c9;
+        color: #2164c9;
+      }
 
-    button.focus {
-      border-color: #2acac0;
+      &.minor.open {
+        color: #103876;
+      }
     }
   }
 
-  .layout-major-keys {
-    grid-template-areas:
-      "Cs x x Fs y y y"
-      "C D E F G A B"
-      "Cb Db Eb z Gb Ab Bb";
-  }
+  .board {
+    padding: $note-board-padding;
+    @include flex;
+    width: ($note-size * 7) + ($grid-gap * 6);
 
-  .layout-minor-keys {
-    grid-template-areas:
-      "Cs Ds x Fs Gs As y"
-      "C D E F G A B"
-      "z z Eb w w Ab Bb";
+    border-radius: 8px;
+    border: 1px solid #3f3a3a;
+    background: #353232;
+
+    &-grid {
+      display: grid;
+      grid-template-areas:
+        "Cs Ds x Fs Gs As y"
+        "C D E F G A B"
+        "z Db Eb w Gb Ab Bb";
+
+      gap: $grid-gap;
+
+      $note-bg: #1c1d20;
+
+      button {
+        @include flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: $note-size;
+        height: $note-size;
+        padding: $p-lg;
+
+        font-size: large;
+        border-radius: 6px;
+        border: 2px solid #0f0f11;
+        background: $note-bg;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      button:hover {
+        background: lighten($note-bg, 4%);
+      }
+
+      button:active {
+        background: lighten($note-bg, 8%);
+      }
+
+      button.correct:active {
+        border-color: #152512;
+        background: #283a27;
+      }
+
+      button.wrong:active {
+        border-color: #251212;
+        background: #372222;
+      }
+
+      button.focus {
+        border-color: #2acac0;
+      }
+    }
+
+    .layout-major-keys {
+      grid-template-areas:
+        "Cs x x Fs y y y"
+        "C D E F G A B"
+        "Cb Db Eb z Gb Ab Bb";
+    }
+
+    .layout-minor-keys {
+      grid-template-areas:
+        "Cs Ds x Fs Gs As y"
+        "C D E F G A B"
+        "z z Eb w w Ab Bb";
+    }
   }
 }

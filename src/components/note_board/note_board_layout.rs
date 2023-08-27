@@ -1,6 +1,6 @@
 use crate::types::Key;
 
-#[derive(Clone, Copy, PartialEq)]
+#[derive(Clone, Copy, PartialEq, Debug)]
 pub enum NoteBoardLayout {
     MajorKeys,
     MinorKeys,
