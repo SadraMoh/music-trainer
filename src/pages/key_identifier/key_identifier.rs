@@ -17,7 +17,22 @@ pub fn KeyIdentifier(cx: Scope) -> impl IntoView {
         Key::Minor(x) => x.icon_url(),
     };
 
-    let new_key = move |_| {
+    let (correct_count, set_correct_count) = create_signal::<u128>(cx, 0);
+    let (wrong_count, set_wrong_count) = create_signal::<u128>(cx, 0);
+
+    let layout = move || NoteBoardLayout::from(question());
+
+    let key_note = move || question().into_note();
+
+    let new_key = move |chosen_note| {
+        if chosen_note == key_note() {
+            set_correct_count
+        } else {
+            set_wrong_count
+        }
+        .update(|prev| *prev += 1);
+
+        let mut rng = rand::thread_rng();
         set_question.set(loop {
             let new_key = rng.gen::<Key>();
             if new_key != question() {
@@ -26,23 +41,14 @@ pub fn KeyIdentifier(cx: Scope) -> impl IntoView {
         });
     };
 
-    let layout = move || NoteBoardLayout::from(question());
-
-    let key_note = move || question().into_note();
-
-    let on_note = |_| {
-        log!("hello from identifier");
-    };
-
     view! {
         cx,
         <div class="key-identifier">
-            <Scores />
-            <button class="dummy" on:click=new_key>{key_note}</button>
+            <Scores correct_count=Dynamic(correct_count.derive_signal(cx)) wrong_count=Dynamic(wrong_count.derive_signal(cx)) />
             <Scene>
                 <img src=question_icon />
             </Scene>
-            <NoteBoard on_note=on_note answer=Dynamic(key_note.derive_signal(cx)) layout=Dynamic(layout.derive_signal(cx)) />
+            <NoteBoard on_note=new_key answer=Dynamic(key_note.derive_signal(cx)) layout=Dynamic(layout.derive_signal(cx)) />
         </div>
     }
 }
