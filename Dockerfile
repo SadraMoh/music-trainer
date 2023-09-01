@@ -25,7 +25,7 @@ FROM rustlang/rust:nightly-bullseye as runner
 COPY --from=builder /app/target/server/release/leptos_start /app/
 COPY --from=builder /app/target/server/release/leptos_start.d /app/
 # /target/site contains our JS/WASM/CSS, etc.
-COPY --from=builder /app/target/site /app/site
+COPY --from=builder /app/target/site /app/
 # Copy Cargo.toml if it’s needed at runtime
 COPY --from=builder /app/Cargo.toml /app/
 WORKDIR /app
@@ -36,5 +36,6 @@ ENV APP_ENVIRONMENT="production"
 ENV LEPTOS_SITE_ADDR="0.0.0.0:3000"
 ENV LEPTOS_SITE_ROOT="site"
 EXPOSE 3000
+
 # Run the server
 CMD ["./leptos_start"]
