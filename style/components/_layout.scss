@@ -8,4 +8,19 @@
   width: 100%;
   max-width: 100vw;
   min-height: 100vh;
+
+  .header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding: 0 $p-sm;
+    @include row;
+    align-items: center;
+    height: $header-height;
+  }
+
+  .content {
+    margin-top: $header-height;
+  }
 }

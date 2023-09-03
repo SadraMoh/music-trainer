@@ -1,3 +1,4 @@
+use crate::components::Icon;
 use leptos::*;
 use leptos_router::Outlet;
 
@@ -5,6 +6,15 @@ use leptos_router::Outlet;
 pub fn Layout(cx: Scope) -> impl IntoView {
     view! {
         cx,
-        <div class="layout"><Outlet/></div>
+        <div class="layout">
+            <header class="header">
+                <button class="clickable">
+                    <Icon name="home" />
+                </button>
+            </header>
+            <div class="content">
+                <Outlet/>
+            </div>
+        </div>
     }
 }

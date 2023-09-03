@@ -36,6 +36,12 @@ where
 
     let on_note = Rc::new(on_note);
 
+    let a = "john";
+
+    log!("{}", a);
+
+    on_cleanup(cx, move || log!("HELLO {}", a));
+
     view! {
         cx,
         <div class="note-board">
