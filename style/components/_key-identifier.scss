@@ -10,10 +10,11 @@
   .scene {
     min-width: 12rem;
     height: 12rem;
+    align-items: center;
+
     img {
-      margin: auto;
-      object-fit: contain;
-      height: 72%;
+      width: 100%;
+      height: auto;
     }
   }
 }
