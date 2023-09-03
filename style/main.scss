@@ -15,6 +15,7 @@
   max-width: unset;
 
   color: $text;
+  text-decoration: none;
 }
 
 body {
@@ -34,9 +35,14 @@ code {
   z-index: 100;
 }
 
+.material-symbols-rounded {
+  user-select: none;
+}
+
 @import "components/scene";
 @import "components/scores";
 @import "components/note-board";
 @import "components/key-identifier";
 @import "components/layout";
 @import "components/clickable";
+@import "components/home";

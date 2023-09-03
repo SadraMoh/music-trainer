@@ -1,12 +1,13 @@
 .clickable {
-  appearance: none;
+  @include flex;
   padding: $p-xs;
+  appearance: none;
   border-radius: 4px;
-  display: block;
   background-color: transparentize($color: white, $amount: 1);
   @include trans;
   transition-property: background-color;
   border: 0;
+  text-decoration: none;
 }
 
 .clickable:not(:disabled) {
