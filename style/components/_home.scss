@@ -1,0 +1,58 @@
+.home {
+  @include col;
+  align-items: center;
+  justify-content: center;
+  gap: $m-xlg;
+
+  .headline {
+    @include col;
+    justify-content: center;
+    text-align: center;
+    gap: $m-md;
+
+    h1 {
+      font-size: larger;
+      font-weight: bold;
+    }
+
+    h2 {
+      font-size: medium;
+      color: $text-2;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 3fr;
+    grid-template-rows: 1fr;
+
+    .module {
+      @include col;
+      gap: $m-sm;
+      justify-content: center;
+      text-align: center;
+
+      .logo {
+        height: auto;
+        aspect-ratio: 1/1;
+        background-color: #909090;
+        border-radius: 4px;
+        @include trans;
+        box-shadow: 0 0px 6px #00000088;
+        transition-property: transform box-shadow;
+      }
+
+      .text {
+        font-weight: 400;
+        font-size: medium;
+      }
+
+      &:hover {
+        .logo {
+          transform: translateY(-8px);
+          box-shadow: 0 8px 12px #00000088;
+        }
+      }
+    }
+  }
+}
