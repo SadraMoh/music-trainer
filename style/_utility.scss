@@ -24,9 +24,18 @@
     flex-direction: column-reverse;
   }
 
-  align-content: $alignContent;
-  justify-content: $justifyContent;
-  align-items: $alignItems;
+  @if $alignContent {
+    align-content: $alignContent;
+  }
+
+  @if $justifyContent {
+    justify-content: $justifyContent;
+  }
+
+  @if $alignItems {
+    align-items: $alignItems;
+  }
+
   flex-wrap: $wrap;
 }
 
@@ -143,16 +152,16 @@
 
 // ------ { Misc } ------
 
-@mixin trans($seconds: 0.2s) {
+@mixin trans($seconds: 0.24s) {
   transition: all ease $seconds;
 }
 
 @mixin transl() {
-  @include trans(0.32s);
+  transition-duration: 0.24s;
 }
 
 @mixin transs {
-  @include trans(0.08s);
+  transition-duration: 0.04s;
 }
 
 @mixin circle() {

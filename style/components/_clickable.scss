@@ -1,0 +1,28 @@
+.clickable {
+  appearance: none;
+  padding: $p-xs;
+  border-radius: 4px;
+  display: block;
+  background-color: transparentize($color: white, $amount: 1);
+  @include trans;
+  transition-property: background-color;
+  border: 0;
+}
+
+.clickable:not(:disabled) {
+  cursor: pointer;
+}
+
+.clickable:disabled {
+  cursor: not-allowed;
+}
+
+.clickable:hover {
+  @include transs;
+  background-color: transparentize($color: white, $amount: 0.92);
+}
+
+.clickable:active {
+  @include transs;
+  background-color: transparentize($color: white, $amount: 0.8);
+}

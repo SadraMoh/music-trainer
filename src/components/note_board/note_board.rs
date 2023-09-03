@@ -36,6 +36,8 @@ where
 
     let on_note = Rc::new(on_note);
 
+    // TODO(leptos 0.5): keyboard controls
+
     view! {
         cx,
         <div class="note-board">
