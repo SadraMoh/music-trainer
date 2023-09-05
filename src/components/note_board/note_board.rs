@@ -1,8 +1,7 @@
-use std::rc::Rc;
-
 use super::NoteBoardLayout;
 use crate::types::{MajorKey, MinorKey, Note};
 use leptos::*;
+use std::rc::Rc;
 
 #[component]
 pub fn NoteBoard<F>(

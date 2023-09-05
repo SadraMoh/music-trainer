@@ -1,0 +1,83 @@
+@import "../utility";
+@import "../vars";
+
+$note-size: 64px;
+$grid-gap: 8px;
+$rhythm-board-padding: $p-lg;
+
+.rhythm-board {
+  display: grid;
+  grid-template-areas: "rests doubles singles" "multiples multiples multiples";
+  gap: $m-md;
+  padding: $rhythm-board-padding;
+
+  border-radius: 8px;
+  border: 1px solid #3f3a3a;
+  background: #353232;
+
+  $key-bg: #1c1d20;
+
+  .rests {
+    grid-area: rests;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: $grid-gap;
+    margin-right: auto;
+  }
+
+  .doubles {
+    grid-area: doubles;
+    @include row;
+    flex-wrap: wrap;
+    width: $note-size * 3 + 2 * $grid-gap;
+    justify-content: center;
+    gap: $grid-gap;
+    margin: auto;
+  }
+
+  .singles {
+    grid-area: singles;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: $grid-gap;
+    margin-left: auto;
+  }
+
+  .multiples {
+    grid-area: multiples;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: $grid-gap;
+
+    button {
+      width: 2 * $note-size + $grid-gap;
+    }
+  }
+
+  button {
+    @include flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: $note-size;
+    height: $note-size;
+
+    font-size: large;
+    border-radius: 6px;
+    border: 2px solid #0f0f11;
+    background: $key-bg;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  button:hover {
+    background: lighten($key-bg, 4%);
+  }
+
+  button:active {
+    background: lighten($key-bg, 8%);
+  }
+}
