@@ -4,12 +4,39 @@
 .rhythm-identifier {
   @include col;
   align-items: center;
-  gap: 6rem;
+  gap: 4rem;
   padding: $p-lg;
+
+  .play-audio {
+    appearance: none;
+
+    @include flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #74c5c0;
+    border: solid 0.2rem #56a09c;
+    box-shadow: 0px 8px 0px #458d89;
+    @include circle;
+    cursor: pointer;
+    @include trans;
+    transition-property: transform box-shadow;
+
+    .icon {
+      color: #283041;
+      font-size: 5rem;
+    }
+
+    &:active {
+      transition-duration: 0s;
+      transform: translateY(6px);
+      box-shadow: 0px 2px 0px #458d89;
+    }
+  }
 
   .scene {
     min-width: 12rem;
-    height: 12rem;
+    height: 8rem;
     align-items: center;
 
     img {
