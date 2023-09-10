@@ -64,6 +64,12 @@ $rhythm-board-padding: $p-lg;
     flex-shrink: 0;
     width: $note-size;
     height: $note-size;
+    color: white;
+
+    img {
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(119deg)
+        brightness(101%) contrast(105%);
+    }
 
     font-size: large;
     border-radius: 6px;

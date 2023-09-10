@@ -27,6 +27,12 @@ code {
     monospace;
 }
 
+button {
+  border: 0;
+  appearance: none;
+  cursor: pointer;
+}
+
 .dummy {
   background-color: red;
   height: 100px;

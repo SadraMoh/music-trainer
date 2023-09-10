@@ -1,6 +1,9 @@
-use std::slice::Iter;
+use std::{
+    fmt::{Debug, Display},
+    slice::Iter,
+};
 
-#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, Debug)]
 pub enum Rhythm {
     // WholeRest,
     HalfRest,
