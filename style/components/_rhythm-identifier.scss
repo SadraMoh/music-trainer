@@ -58,7 +58,7 @@
 
       &:hover {
         @include trans(0.1s);
-        background-color: transparentize($color: #000000, $amount: 0.8);
+        background-color: transparentize($color: #000000, $amount: 0.9);
       }
     }
   }

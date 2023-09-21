@@ -57,6 +57,30 @@ impl Rhythm {
     const SEMIQUAVER_SEMIQUAVER_QUAVER_QUAVER: [u8; 4] = [2, 2, 4, 4];
     const QUAVER_QUAVER_SEMIQUAVER_SEMIQUAVER: [u8; 4] = [4, 4, 2, 2];
 
+    pub const ALL: [Rhythm; 21] = [
+        Rhythm::HalfRest,
+        Rhythm::QuarterRest,
+        Rhythm::EighthRest,
+        Rhythm::SixthteenthRest,
+        Rhythm::Semibreve,
+        Rhythm::Minim,
+        Rhythm::Crotchet,
+        Rhythm::Quaver,
+        Rhythm::QuaverQuaver,
+        Rhythm::QuaverSemiquaver,
+        Rhythm::QuaverSemiquaverDot,
+        Rhythm::QuaverDotSemiquaver,
+        Rhythm::SemiQuaverSemiquaver,
+        Rhythm::QuaverSemiquaverSemiquaver,
+        Rhythm::SemiquaverSemiquaverQuaver,
+        Rhythm::SemiquaverQuaverSemiquaver,
+        Rhythm::QuaverQuaverQuaver,
+        Rhythm::SemiquaverSemiquaverSemiquaverSemiquaver,
+        Rhythm::QuaverSemiquaverSemiquaverQuaver,
+        Rhythm::SemiquaverSemiquaverQuaverQuaver,
+        Rhythm::QuaverQuaverSemiquaverSemiquaver,
+    ];
+
     fn iters(&self) -> Iter<'_, u8> {
         use Rhythm as R;
         match self {
