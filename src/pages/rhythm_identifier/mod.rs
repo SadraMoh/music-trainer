@@ -1,3 +1,4 @@
+mod randomizer;
 mod rhythm_identifier;
 
-pub use rhythm_identifier::RhythmIdentifier;
+pub use {randomizer::create_seq, rhythm_identifier::RhythmIdentifier};

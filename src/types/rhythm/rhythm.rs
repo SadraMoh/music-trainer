@@ -1,7 +1,4 @@
-use std::{
-    fmt::{Debug, Display},
-    slice::Iter,
-};
+use std::{fmt::Debug, slice::Iter};
 
 #[derive(Clone, Copy, PartialEq, Eq, Hash, Debug)]
 pub enum Rhythm {
@@ -34,28 +31,31 @@ pub enum Rhythm {
 }
 
 impl Rhythm {
-    const HALF_REST: [u8; 1] = [32];
-    const QUARTER_REST: [u8; 1] = [16];
-    const EIGHTH_REST: [u8; 1] = [8];
-    const SIXTHTEENTH_REST: [u8; 1] = [4];
-    const SEMIBREVE: [u8; 1] = [32];
-    const MINIM: [u8; 1] = [16];
-    const CROTCHET: [u8; 1] = [8];
-    const QUAVER: [u8; 1] = [4];
-    // const SEMIQUAVER: [u8; 1] = [2];
-    const QUAVER_QUAVER: [u8; 2] = [4, 4];
-    const QUAVER_SEMIQUAVER: [u8; 2] = [4, 2];
-    const QUAVER_SEMIQUAVER_DOT: [u8; 2] = [4, 3];
-    const QUAVER_DOT_SEMIQUAVER: [u8; 2] = [6, 2];
-    const SEMIQUAVER_SEMIQUAVER: [u8; 2] = [2, 2];
-    const QUAVER_SEMIQUAVER_SEMIQUAVER: [u8; 3] = [4, 2, 2];
-    const SEMIQUAVER_SEMIQUAVER_QUAVER: [u8; 3] = [2, 2, 4];
-    const SEMIQUAVER_QUAVER_SEMIQUAVER: [u8; 3] = [4, 2, 2];
-    const QUAVER_QUAVER_QUAVER: [u8; 3] = [4, 4, 4];
-    const SEMIQUAVER_SEMIQUAVER_SEMIQUAVER_SEMIQUAVER: [u8; 4] = [2, 2, 2, 2];
-    const QUAVER_SEMIQUAVER_SEMIQUAVER_QUAVER: [u8; 4] = [4, 2, 2, 4];
-    const SEMIQUAVER_SEMIQUAVER_QUAVER_QUAVER: [u8; 4] = [2, 2, 4, 4];
-    const QUAVER_QUAVER_SEMIQUAVER_SEMIQUAVER: [u8; 4] = [4, 4, 2, 2];
+    const HALF_REST: [i8; 1] = [-32];
+    const QUARTER_REST: [i8; 1] = [-16];
+    const EIGHTH_REST: [i8; 1] = [-8];
+    const SIXTHTEENTH_REST: [i8; 1] = [-4];
+
+    const SEMIBREVE: [i8; 1] = [32];
+    const MINIM: [i8; 1] = [16];
+    const CROTCHET: [i8; 1] = [8];
+    const QUAVER: [i8; 1] = [4];
+    // const SEMIQUAVER: [i8; 1] = [2];
+
+    const QUAVER_QUAVER: [i8; 2] = [4, 4];
+    const QUAVER_SEMIQUAVER: [i8; 2] = [4, 2];
+    const QUAVER_SEMIQUAVER_DOT: [i8; 2] = [4, 3];
+    const QUAVER_DOT_SEMIQUAVER: [i8; 2] = [6, 2];
+    const SEMIQUAVER_SEMIQUAVER: [i8; 2] = [2, 2];
+
+    const QUAVER_SEMIQUAVER_SEMIQUAVER: [i8; 3] = [4, 2, 2];
+    const SEMIQUAVER_SEMIQUAVER_QUAVER: [i8; 3] = [2, 2, 4];
+    const SEMIQUAVER_QUAVER_SEMIQUAVER: [i8; 3] = [4, 2, 2];
+    const QUAVER_QUAVER_QUAVER: [i8; 3] = [4, 4, 4];
+    const SEMIQUAVER_SEMIQUAVER_SEMIQUAVER_SEMIQUAVER: [i8; 4] = [2, 2, 2, 2];
+    const QUAVER_SEMIQUAVER_SEMIQUAVER_QUAVER: [i8; 4] = [4, 2, 2, 4];
+    const SEMIQUAVER_SEMIQUAVER_QUAVER_QUAVER: [i8; 4] = [2, 2, 4, 4];
+    const QUAVER_QUAVER_SEMIQUAVER_SEMIQUAVER: [i8; 4] = [4, 4, 2, 2];
 
     pub const ALL: [Rhythm; 21] = [
         Rhythm::HalfRest,
@@ -81,7 +81,7 @@ impl Rhythm {
         Rhythm::QuaverQuaverSemiquaverSemiquaver,
     ];
 
-    fn iters(&self) -> Iter<'_, u8> {
+    fn iters(&self) -> Iter<'_, i8> {
         use Rhythm as R;
         match self {
             R::HalfRest => R::HALF_REST.iter(),
@@ -116,11 +116,11 @@ impl Rhythm {
     /// 4 -> quaver
     /// 2 -> semiquaver
     /// 1 -> thirthytwoth
-    pub fn duration(&self) -> u8 {
-        Self::iters(self).sum()
+    pub fn duration(&self) -> u32 {
+        Self::iters(self).fold(0, |acc, n| (n.abs() as u32) + acc)
     }
 
-    pub fn beats(&self) -> &[u8] {
+    pub fn beats(&self) -> &[i8] {
         Self::iters(self).as_slice()
     }
 }
