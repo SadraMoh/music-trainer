@@ -2,7 +2,7 @@ use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
 
-use crate::pages::{HomePage, KeyIdentifier, Layout, NotFound};
+use crate::pages::{HomePage, KeyIdentifier, Layout, NotFound, RhythmIdentifier};
 
 #[component]
 pub fn App(cx: Scope) -> impl IntoView {
@@ -25,6 +25,7 @@ pub fn App(cx: Scope) -> impl IntoView {
                     <Route path="" view=Layout>
                         <Route path="" view=HomePage />
                         <Route path="key-identifier" view=KeyIdentifier />
+                        <Route path="rhythm-identifier" view=RhythmIdentifier />
                     </Route>
                     <Route path="/*any" view=NotFound />
                 </Routes>

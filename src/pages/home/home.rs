@@ -14,7 +14,13 @@ pub fn HomePage(cx: Scope) -> impl IntoView {
                <li>
                     <A href="/key-identifier" class="module">
                         <img width="128" height="128" src="/assets/icons/modules/key-identifier.svg" class="logo" />
-                        <h4 class="text">"Identify keys"</h4>
+                        <h3 class="text">"Identify keys"</h3>
+                    </A>
+               </li>
+               <li>
+                    <A href="/rhythm-identifier" class="module">
+                        <img width="128" height="128" src="/assets/icons/modules/rhythm-identifier.svg" class="logo" />
+                        <h3 class="text">"Identify rhythm"</h3>
                     </A>
                </li>
             </ul>

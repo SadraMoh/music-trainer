@@ -1,6 +1,5 @@
-use super::scores::Scores;
 use crate::{
-    components::{NoteBoard, NoteBoardLayout, Scene},
+    components::{NoteBoard, NoteBoardLayout, Scene, Scores},
     types::{Key, MajorKey, Note},
 };
 use leptos::*;

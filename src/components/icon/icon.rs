@@ -15,7 +15,7 @@ where
 
     view! {
         cx,
-        <span class=format!{"material-symbols-rounded {}", class}>
+        <span class=format!{"material-symbols-rounded icon {}", class}>
           {name}
         </span>
     }
