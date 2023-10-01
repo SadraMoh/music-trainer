@@ -22,9 +22,10 @@
   }
 
   .grid {
-    display: grid;
-    grid-template-columns: 3fr;
-    grid-template-rows: 1fr;
+    @include row;
+    justify-content: center;
+    margin: auto;
+    gap: 2rem;
 
     .module {
       @include col;
@@ -35,10 +36,10 @@
       .logo {
         height: auto;
         aspect-ratio: 1/1;
-        background-color: #909090;
+        background-color: #3d3b3b;
         border-radius: 4px;
         @include trans;
-        box-shadow: 0 0px 6px #00000088;
+        box-shadow: 0px 4px 12px #00000088;
         transition-property: transform box-shadow;
       }
 
@@ -50,7 +51,7 @@
       &:hover {
         .logo {
           transform: translateY(-8px);
-          box-shadow: 0 8px 12px #00000088;
+          box-shadow: 0px 12px 16px #00000077;
         }
       }
     }
