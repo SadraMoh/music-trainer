@@ -1,7 +1,8 @@
+use super::Sequence;
 use crate::types::Rhythm;
 use rand::Rng;
 
-pub fn create_seq() -> Vec<Rhythm> {
+pub fn create_seq() -> Sequence {
     let mut rng = rand::thread_rng();
     let seq_length = rng.gen_range(2..=6);
     let mut seq = vec![Rhythm::Crotchet; seq_length];

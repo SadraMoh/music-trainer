@@ -18,11 +18,26 @@ leptos_actix = { version = "0.4", optional = true }
 leptos_router = { version = "0.4", features = ["nightly"] }
 wasm-bindgen = "=0.2.87"
 
+
 # My dependencies
 const_format = "0.2.31"
 bimap = "0.6.3"
 once_cell = "1.18.0"
 rand = "0.8.5"
+js-sys = "0.3.64"
+
+[dependencies.web-sys]
+version = "0.3.4"
+features = [
+  'AudioContext',
+  'AudioDestinationNode',
+  'AudioNode',
+  'AudioParam',
+  'GainNode',
+  'OscillatorNode',
+  'OscillatorType',
+]
+
 
 # TODO
 # stylers = { git = "https://github.com/abishekatp/stylers.git", rev = "efea057" }
