@@ -9,11 +9,14 @@ const TWEEN: f64 = 0.09;
 /// duration of ramp
 const RAMPT: f64 = 0.01;
 
-pub fn play_seq(seq: Sequence) -> Result<(), JsValue> {
+pub fn play_seq(seq: Sequence, frequency: Option<f32>) -> Result<(), JsValue> {
+    let frequency = frequency.unwrap_or(440.);
+
     let ctx = web_sys::AudioContext::new()?;
     let now = ctx.current_time();
 
     let osc = ctx.create_oscillator()?;
+    osc.frequency().set_value(frequency);
     osc.start()?;
 
     let gain = ctx.create_gain()?;

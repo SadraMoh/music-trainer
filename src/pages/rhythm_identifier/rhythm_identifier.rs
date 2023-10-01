@@ -48,7 +48,10 @@ pub fn RhythmIdentifier(cx: Scope) -> impl IntoView {
         })
     };
 
-    let play_audio = move || super::player::play_seq(seq());
+    let play_target = move || super::player::play_seq(seq(), None);
+
+    let play_picked =
+        move || super::player::play_seq(picked().iter().map(|(_, r)| *r).collect(), Some(220.));
 
     let skip = move |_| {
         set_picked.set(Vec::new());
@@ -61,7 +64,7 @@ pub fn RhythmIdentifier(cx: Scope) -> impl IntoView {
         <div class="rhythm-identifier">
             <Scores correct_count=correct_count.into() wrong_count=wrong_count.into() />
             <div class="buttons">
-                <button class="play-audio" on:click=move |_| { play_audio().unwrap_or_default() }>
+                <button class="play-audio" on:click=move |_| { play_target().unwrap_or_default() }>
                     <Icon name="play_arrow" />
                 </button>
                 <button class="skip" on:click=skip>
@@ -80,6 +83,9 @@ pub fn RhythmIdentifier(cx: Scope) -> impl IntoView {
                     }
                 } />
             </Scene>
+            <button class="play-picked" on:click=move |_| play_picked().unwrap_or_default() >
+                <Icon name="play_circle" />
+            </button>
             <RhythmBoard on_note=add_rhythm />
         </div>
     }
