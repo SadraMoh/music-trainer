@@ -8,7 +8,7 @@ use leptos::*;
 
 #[component]
 pub fn RhythmIdentifier(cx: Scope) -> impl IntoView {
-    let (seq, _) = create_signal::<Sequence>(cx, create_seq());
+    let (seq, set_seq) = create_signal::<Sequence>(cx, create_seq());
     let seq_beats = move || {
         seq()
             .iter()
@@ -18,6 +18,9 @@ pub fn RhythmIdentifier(cx: Scope) -> impl IntoView {
 
     let (id_counter, set_id_counter) = create_signal::<u128>(cx, 0);
     let (picked, set_picked) = create_signal(cx, Vec::<(u128, Rhythm)>::new());
+
+    let (correct_count, set_correct_count) = create_signal::<u128>(cx, 0);
+    let (wrong_count, set_wrong_count) = create_signal::<u128>(cx, 0);
 
     let is_correct = move || {
         let a = picked()
@@ -31,6 +34,12 @@ pub fn RhythmIdentifier(cx: Scope) -> impl IntoView {
     let add_rhythm = move |rhythm: Rhythm| {
         set_id_counter.update(|prev| *prev += 1);
         set_picked.update(|prev| prev.push((id_counter(), rhythm)));
+
+        if is_correct() {
+            set_correct_count.update(|prev| *prev += 1);
+            set_seq.set(create_seq());
+            set_picked.set(Vec::new());
+        }
     };
 
     let remove_rhythm = move |id_to_be_deleted: u128| {
@@ -41,13 +50,24 @@ pub fn RhythmIdentifier(cx: Scope) -> impl IntoView {
 
     let play_audio = move || super::player::play_seq(seq());
 
+    let skip = move |_| {
+        set_picked.set(Vec::new());
+        set_wrong_count.update(|prev| *prev += 1);
+        set_seq.set(create_seq());
+    };
+
     view! {
         cx,
         <div class="rhythm-identifier">
-            <Scores correct_count={MaybeSignal::Static(1)} wrong_count={MaybeSignal::Static(2)}  />
-            <button class="play-audio" on:click=move |_| { play_audio().unwrap_or_default() }>
-                <Icon name="play_arrow" />
-            </button>
+            <Scores correct_count=correct_count.into() wrong_count=wrong_count.into() />
+            <div class="buttons">
+                <button class="play-audio" on:click=move |_| { play_audio().unwrap_or_default() }>
+                    <Icon name="play_arrow" />
+                </button>
+                <button class="skip" on:click=skip>
+                    <Icon name="skip_next" />
+                </button>
+            </div>
             <Scene>
                 <For each=move || picked() key=|(id, _)| { *id } view=move |cx, (id, rhythm)| {
                     let rhythm = rhythm.to_owned();
@@ -60,7 +80,6 @@ pub fn RhythmIdentifier(cx: Scope) -> impl IntoView {
                     }
                 } />
             </Scene>
-            { move || if is_correct() { "correct!" } else {""}.to_string() }
             <RhythmBoard on_note=add_rhythm />
         </div>
     }

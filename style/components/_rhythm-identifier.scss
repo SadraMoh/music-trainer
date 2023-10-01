@@ -7,33 +7,65 @@
   gap: 4rem;
   padding: $p-lg;
 
-  .play-audio {
-    appearance: none;
-
-    @include flex;
-    justify-content: center;
+  .buttons {
+    @include row;
     align-items: center;
+    gap: 2rem;
 
-    background-color: #74c5c0;
-    border: solid 0.2rem #56a09c;
-    box-shadow: 0px 8px 0px #458d89;
-    @include circle;
-    cursor: pointer;
-    @include trans;
-    transition-property: transform box-shadow;
+    .skip {
+      appearance: none;
 
-    .icon {
-      color: #283041;
-      font-size: 5rem;
+      @include flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: #c57474;
+      border: solid 0.2rem #a05656;
+      box-shadow: 0px 8px 0px #8d4545;
+      @include circle;
+      cursor: pointer;
+      @include trans;
+      transition-property: transform box-shadow;
+
+      .icon {
+        color: #412828;
+        font-size: 4rem;
+      }
+
+      &:active {
+        transition-duration: 0s;
+        transform: translateY(6px);
+        box-shadow: 0px 2px 0px #8d4545;
+      }
     }
 
-    &:active {
-      transition-duration: 0s;
-      transform: translateY(6px);
-      box-shadow: 0px 2px 0px #458d89;
+    .play-audio {
+      appearance: none;
+
+      @include flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: #74c5c0;
+      border: solid 0.2rem #56a09c;
+      box-shadow: 0px 8px 0px #458d89;
+      @include circle;
+      cursor: pointer;
+      @include trans;
+      transition-property: transform box-shadow;
+
+      .icon {
+        color: #283041;
+        font-size: 5rem;
+      }
+
+      &:active {
+        transition-duration: 0s;
+        transform: translateY(6px);
+        box-shadow: 0px 2px 0px #458d89;
+      }
     }
   }
-
   .scene {
     @include row;
     flex-wrap: nowrap;
